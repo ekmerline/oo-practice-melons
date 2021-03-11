@@ -16,6 +16,10 @@ class MelonType(object):
 # )
 
 # musk1.code
+
+# musk1.update_code("muskier")
+#musk1.new_code is now "muskier"
+#musk1.code is still "musk"
     def __init__(self, code, first_harvest, color, is_seedless, is_bestseller, 
                  name):
         """Initialize a melon."""
@@ -38,6 +42,7 @@ class MelonType(object):
         """Replace the reporting code with the new_code."""
 
         # Fill in the rest
+        self.code = new_code
 
 
 def make_melon_types():
@@ -46,6 +51,18 @@ def make_melon_types():
     all_melon_types = []
 
     # Fill in the rest
+    muskmelon = MelonType("musk", 1998, "green", True, True, "Muskmelon")
+    muskmelon.add_pairing("mint")
+
+    casaba = MelonType("cas", 2003, "orange", False, False, "Casaba")
+    casaba.add_pairing("mint")
+    casaba.add_pairing("strawberries ")
+    
+    crenshaw = MelonType("cren", 1996, "green", False, False, "Crenshaw")
+    crenshaw.add_pairing("proscuitto")
+
+    yellow_watermelon = MelonType("yw", 2013, "yellow", False, True, "Yellow Watermelon")
+    yellow_watermelon.add_pairing("ice cream")
 
     return all_melon_types
 
