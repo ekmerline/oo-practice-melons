@@ -53,28 +53,42 @@ def make_melon_types():
     # Fill in the rest
     muskmelon = MelonType("musk", 1998, "green", True, True, "Muskmelon")
     muskmelon.add_pairing("mint")
+    all_melon_types.append(muskmelon)
 
     casaba = MelonType("cas", 2003, "orange", False, False, "Casaba")
     casaba.add_pairing("mint")
     casaba.add_pairing("strawberries ")
-    
+    all_melon_types.append(casaba)
+
     crenshaw = MelonType("cren", 1996, "green", False, False, "Crenshaw")
     crenshaw.add_pairing("proscuitto")
+    all_melon_types.append(crenshaw)
 
     yellow_watermelon = MelonType("yw", 2013, "yellow", False, True, "Yellow Watermelon")
     yellow_watermelon.add_pairing("ice cream")
+    all_melon_types.append(yellow_watermelon)
 
     return all_melon_types
 
 def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
-
     # Fill in the rest
+    for melon_type in melon_types:
+        if len(melon_type.pairings) > 0:
+            print(f"{melon_type.name} pairs with")
+            for pairing in melon_type.pairings:
+                print(f"- {pairing}")
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
 
+    melon_type_dict = {}
     # Fill in the rest
+    for melon_type in melon_types:
+        melon_type_dict[melon_type.code] = melon_type
+        
+    return melon_type_dict
+
 
 ############
 # Part 2   #
@@ -85,6 +99,18 @@ class Melon(object):
 
     # Fill in the rest
     # Needs __init__ and is_sellable methods
+    def __init__(self, melon_type, shape_rating, color_rating, harvested_from, harvested_by):
+        self.melon_type = melon_type
+        self.shape_rating = shape_rating
+        self.color_rating = color_rating
+        self.harvested_from = harvested_from
+        self.harvested_by = harvested_by
+        
+    def is_sellabe(self):
+        if self.color_rating > 4 and self.shape_rating > 5 and  self.harvested_from != "Field 5":
+            return True
+        else:
+            return False
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
